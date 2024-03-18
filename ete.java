@@ -1168,27 +1168,156 @@
 // }
 // }
 
-import java.util.*;
+// import java.util.*;
 
-public class ete {
-        public static void main(String args[]) {
-                Scanner sc = new Scanner(System.in);
+// public class ete {
+//         public static void main(String args[]) {
+//                 Scanner sc = new Scanner(System.in);
 
-                int length = 0;
+//                 int length = 0;
 
-                LinkedList<Integer> list = new LinkedList<>();
-                while (true) {
-                        int n = sc.nextInt();
-                        if (n == -1) {
-                                break;
-                        }
+//                 LinkedList<Integer> list = new LinkedList<>();
+//                 while (true) {
+//                         int n = sc.nextInt();
+//                         if (n == -1) {
+//                                 break;
+//                         }
 
-                        list.add(n);
-                        length++;
-                }
+//                         list.add(n);
+//                         length++;
+//                 }
 
-                int key = sc.nextInt();
+//                 int key = sc.nextInt();
 
-                System.out.println(list.get(length - key));
+//                 System.out.println(list.get(length - key));
+//         }
+// }
+
+
+
+
+// import java.util.Scanner;
+
+// public class ete {
+//     public static void main(String[] args) {
+//         Scanner scanner = new Scanner(System.in);
+
+//         // Input text
+//         System.out.println("Enter the text:");
+//         String text = scanner.nextLine();
+
+//         // Input pattern
+//         System.out.println("Enter the pattern:");
+//         String pattern = scanner.nextLine();
+
+//         // Call the search function
+//         int result = searchPattern(text, pattern);
+
+//         // Output the result
+//         System.out.println("Index where pattern found: " + result);
+//     }
+
+//     // Function to search for the pattern in the text
+//     private static int searchPattern(String text, String pattern) {
+//         int textLength = text.length();
+//         int patternLength = pattern.length();
+
+//         // Iterate through the text
+//         for (int i = 0; i <= textLength - patternLength; i++) {
+//             // Check if the substring of text matches the pattern
+//             if (text.substring(i, i + patternLength).equals(pattern)) {
+//                 // Return the index if a match is found
+//                 return i;
+//             }
+//         }
+
+//         // Return -1 if no match is found
+//         return -1;
+//     }
+// }
+
+
+
+//                unique elements
+
+
+// import java.util.*;
+// public class ete{
+// public static void main (String args[]){
+// Scanner sc=new Scanner(System.in);
+//      int n=sc.nextInt();
+     
+//      int arr[]=new int[n];
+
+//      for(int i=0;i<n;i++){
+//         arr[i]=sc.nextInt();
+//      }
+
+
+//      int ans=0;
+
+
+//      for(int i=0;i<n;i++){
+//         ans=ans^arr[i];
+//      }
+
+//      System.out.println(ans);
+// }
+// }
+
+
+
+
+//               ***********************Sort indices***************************
+
+import java.util.Scanner;
+
+public class ete{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input size of the array
+        System.out.println("Enter the size of the array (N):");
+        int N = scanner.nextInt();
+
+        // Input array of integers
+        System.out.println("Enter the array of integers (space-separated):");
+        int[] arr = new int[N];
+        for (int i = 0; i < N; i++) {
+            arr[i] = scanner.nextInt();
         }
+
+        // Call the function to sort and print the indices
+        sortAndPrintIndices(arr);
+    }
+
+    // Function to sort and print the indices
+    private static void sortAndPrintIndices(int[] arr) {
+        Integer[] indices = new Integer[arr.length];
+
+        // Initialize the indices array
+        for (int i = 0; i < arr.length; i++) {
+            indices[i] = i;
+        }
+
+        // Sort the indices array based on the values at those indices in descending order
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[indices[i]] < arr[indices[j]] || 
+                    (arr[indices[i]] == arr[indices[j]] && indices[i] > indices[j])) {
+                    // Swap indices if the value at the current index is less than the value at the next index
+                    // or if the values are equal, consider the index of the number that appears first
+                    int temp = indices[i];
+                    indices[i] = indices[j];
+                    indices[j] = temp;
+                }
+            }
+        }
+
+        // Print the sorted indices
+        System.out.println("Sorted Indices:");
+        for (int i : indices) {
+            System.out.print(i + " ");
+        }
+    }
 }

@@ -1254,39 +1254,42 @@ import java.util.*;
 
 import java.util.*;
 public class ete2{
+
+    public static void printok(int arr[]){
+
+        int indices[]=new int[arr.length];
+
+        for(int i=0;i<arr.length;i++){
+            indices[i]=i;
+        }
+
+        for(int i=0;i<indices.length-1;i++){
+            for(int j=i+1;j<indices.length;j++){
+                if(arr[indices[i]]<arr[indices[j]] || arr[indices[i]]==arr[indices[j]] && arr[indices[i]]>arr[indices[j]]){
+                    int temp=indices[i];
+                    indices[i]=indices[j];
+                    indices[j]=temp;
+                }
+            }
+        }
+
+        for(int i:indices){
+            System.out.println(i);
+        }
+
+
+    }
 public static void main (String args[]){
-Scanner sc=new Scanner(System.in);
-int number;
-	    number = sc.nextInt();
-	    
-	    int n=number;
-	    int fact = 0;
-        for(int i = 2; i< number; i++) {
-	         while(number%i == 0) {
-	        	 fact+=i;
-	             number = number/i;
-	         }
-	     }
-	    if(number >2) {
-	        fact+=number; 
-	       }
-	    
-	    int sum = 0;
-	    
-	    while(n>0) {
-	    	int rem = n % 10;
-	    	sum+=rem;
-	    	n = n / 10;
-	    }
-	    
-	    System.out.println(fact + " "+ sum);
+   Scanner sc=new Scanner(System.in);
+   
+   int n=sc.nextInt();
 
-	    if(sum==fact) {
-	    	System.out.println(1);
-	    }
-	    else {
-	    	System.out.println(0);
-	    }
+   int arr[]=new int[n];
 
+   for(int i=0;i<n;i++){
+    arr[i]=sc.nextInt();
+   }
+
+   printok(arr);
 }
 }
